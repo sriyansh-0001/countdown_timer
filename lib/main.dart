@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/api_quote_screen.dart';
 import 'screens/history_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
@@ -10,11 +11,7 @@ import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Initialize persistent storage via SharedPreferences
   final storageService = await StorageService.create();
-
-  // Initialize business logic timer service
   final timerService = TimerService(storageService);
 
   runApp(
@@ -46,6 +43,7 @@ class CountdownApp extends StatelessWidget {
         HomeScreen.routeName: (context) => const HomeScreen(),
         SettingsScreen.routeName: (context) => const SettingsScreen(),
         HistoryScreen.routeName: (context) => const HistoryScreen(),
+        ApiQuoteScreen.routeName: (context) => const ApiQuoteScreen(),
       },
     );
   }
