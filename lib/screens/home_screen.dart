@@ -6,8 +6,10 @@ import '../theme/app_theme.dart';
 import '../widgets/circular_timer_progress.dart';
 import '../widgets/completion_dialog.dart';
 import '../widgets/countdown_display.dart';
+import '../widgets/fade_slide_entrance.dart';
 import '../widgets/preset_card.dart';
 import '../widgets/timer_controls.dart';
+import 'api_quote_screen.dart';
 import 'custom_timer_dialog.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
@@ -88,6 +90,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.format_quote_rounded),
+            tooltip: 'REST API – Focus Quote',
+            onPressed: () =>
+                Navigator.of(context).pushNamed(ApiQuoteScreen.routeName),
+          ),
+          IconButton(
             icon: const Icon(Icons.history_rounded),
             tooltip: 'Session History',
             onPressed: () =>
@@ -140,15 +148,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             // Circular Progress Indicator with Center Countdown Digits
             SizedBox(
               height: constraints.maxHeight * 0.40,
-              child: CircularTimerProgress(
-                progress: timerService.progress,
-                status: timerService.status,
-                child: CountdownDisplay(
-                  formattedTime: timerService.formattedRemainingTime,
+              child: FadeSlideEntrance(
+                child: CircularTimerProgress(
+                  progress: timerService.progress,
                   status: timerService.status,
-                  title: timerService.title,
-                  totalDurationFormatted: timerService.formattedTime(
-                    timerService.initialDuration,
+                  child: CountdownDisplay(
+                    formattedTime: timerService.formattedRemainingTime,
+                    status: timerService.status,
+                    title: timerService.title,
+                    totalDurationFormatted: timerService.formattedTime(
+                      timerService.initialDuration,
+                    ),
                   ),
                 ),
               ),
@@ -190,15 +200,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           // Left: Circular Progress and Countdown
           Expanded(
             flex: 5,
-            child: CircularTimerProgress(
-              progress: timerService.progress,
-              status: timerService.status,
-              child: CountdownDisplay(
-                formattedTime: timerService.formattedRemainingTime,
+            child: FadeSlideEntrance(
+              child: CircularTimerProgress(
+                progress: timerService.progress,
                 status: timerService.status,
-                title: timerService.title,
-                totalDurationFormatted: timerService.formattedTime(
-                  timerService.initialDuration,
+                child: CountdownDisplay(
+                  formattedTime: timerService.formattedRemainingTime,
+                  status: timerService.status,
+                  title: timerService.title,
+                  totalDurationFormatted: timerService.formattedTime(
+                    timerService.initialDuration,
+                  ),
                 ),
               ),
             ),
