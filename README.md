@@ -5,14 +5,14 @@
 [![Material Design](https://img.shields.io/badge/Material%203-Enabled-7B1FA2)](https://m3.material.io)
 [![Tests](https://img.shields.io/badge/Tests-19%2F19%20Passing-success)](https://flutter.dev)
 
-A modern, high-precision, responsive mobile countdown timer developed using Flutter and Material 3 design guidelines. Designed for students, professionals, and productivity enthusiasts to manage focus sessions, workouts, study sprints, and daily tasks with reliability and elegance.
+A Flutter-based countdown timer designed to help users manage study sessions, breaks, workouts, and daily tasks. The application includes timer presets, custom durations, pause/resume controls, session history, theme settings, and completion alerts.
 
 ---
 
 ## 🎓 Academic Project Information
 
-- **Institution:** ACE Engineering College (An Autonomous Institution, Affiliated to JNTUH)
-- **Department:** Department of Computer Science & Engineering
+- **Institution:** ACE Engineering College
+- **Department:** Computer Science & Engineering
 - **Program:** Bachelor of Technology (B.Tech), 3rd Year, Semester 1
 - **Course / Lab:** Mobile Application Development Lab (Flutter 2026 Curriculum)
 - **Student Name:** Sriyansh
@@ -21,176 +21,244 @@ A modern, high-precision, responsive mobile countdown timer developed using Flut
 
 ---
 
-## 🌟 Key Features
+## 🎯 Project Objectives
 
-1. **High-Precision Time Engine:**
-   - Calculations rely on absolute target timestamps (`targetEndTime.difference(DateTime.now())`), completely eliminating timer drift caused by periodic loop execution delays.
-   - Smooth 200ms tick updates for responsive UI rendering.
+- Build a functional countdown timer using Flutter and Dart.
+- Design a responsive interface using Flutter widgets.
+- Manage timer state and update the interface dynamically.
+- Allow users to select preset durations or enter a custom duration.
+- Store timer preferences and session data locally.
+- Apply navigation, form validation, reusable widgets, themes, and testing concepts.
 
-2. **App Lifecycle & Crash Recovery:**
-   - Subscribed to `WidgetsBindingObserver` to detect app state transitions (`didChangeAppLifecycleState`).
-   - Automatically synchronizes remaining duration when waking from background or inactive states.
-   - Persists running and paused states in local device storage (`SharedPreferences`) to restore active sessions if the app is terminated by the OS.
+## 🌟 Main Features
 
-3. **Material 3 Visual Design & Theming:**
-   - Premium Slate and Deep Navy palette (`#0F172A`, `#0B1120`) paired with Cyan and Teal accents (`#06B6D4`, `#14B8A6`).
-   - Full support for **Light**, **Dark**, and **System** themes with zero-restart instant switching.
-   - Monospaced digital countdown typography (`HH:MM:SS`) to eliminate numerical jitter during countdowns.
-   - State-aware dynamic circular progress ring (`CircularTimerProgress`) with glowing ambient stroke.
-
-   
-   **Experiment 2, 3, 5 & 6 — Basic Widgets, Responsive Design, Provider State & Custom Styling**
-
-   The home dashboard demonstrates the widget tree, responsive layout, Provider-driven timer state, reusable controls, preset cards, and the Material 3 progress indicator.
-
-   ![Home screen — Experiments 2, 3, 5 and 6](./screenshots/home-screen.svg)
-
-   *Source-based UI preview, not a device capture.*
-
-
-4. **Presets & Custom Duration Management:**
-   - 8 built-in quick presets:
-     - ⚡ Quick Test (1 min)
-     - ☕ Short Break (5 min)
-     - 🫖 Tea Break (10 min)
-     - 🛌 Power Nap (15 min)
-     - 🎓 Study Session (25 min)
-     - 🏋️ Workout (30 min)
-     - 📖 Reading Time (45 min)
-     - 🧠 Deep Work (60 min)
-   - Interactive **Custom Duration Dialog** incorporating Flutter Form Validation (`Form`, `GlobalKey<FormState>`, `TextFormField`) with numerical limits and name tagging.
-   - User-created custom presets with full persistence and deletion support.
-   - Quick time-bump buttons (`+1 min`, `+5 min`) during active or paused timers.
-
-   
-   **Experiment 7 — Forms & Input Validation**
-
-   The custom duration form demonstrates session-name input, hour/minute/second fields, duration validation, and the option to save a reusable preset.
-
-   ![Custom duration form — Experiment 7](./screenshots/custom-duration.svg)
-
-   *Source-based UI preview, not a device capture.*
-
-
-5. **Multi-Sensory Alerts & Feedback:**
-   - Audio chime looped alert upon completion using valid PCM audio.
-   - Tactile haptic vibration for button taps and alarm notifications.
-   - Modal completion dialog with one-tap dismissal and instant session restart.
-
-   
-   **Experiment 9 — Hardware Plugins & User Preferences**
-
-   The Settings screen demonstrates theme selection, sound alerts, vibration feedback, and local data management.
-
-   ![Settings and feedback preferences — Experiment 9](./screenshots/settings-screen.svg)
-
-   *Source-based UI preview, not a device capture.*
-
-
-6. **History Logging & Analytics:**
-   - Automatically logs completed timer sessions with duration, session name, and formatted timestamp.
-   - Dedicated Session History screen (`/history`) with empty-state handling and complete history clearing.
-
-   
-   **Experiment 4 — Navigation & Named Routes**
-
-   The History screen is a named-route destination and displays completed timer sessions.
-
-   ![Session history — Experiment 4](./screenshots/history-screen.svg)
-
-   *The session names and timestamps are illustrative sample entries. This is a source-based UI preview, not a device capture.*
-
+1. **Countdown timer:** Start, pause, resume, reset, and adjust the remaining time.
+2. **Quick presets:** Choose from predefined durations for short breaks, study sessions, workouts, and focused work.
+3. **Custom duration:** Enter a session name and duration through a validated form; save reusable presets.
+4. **Session history:** View completed timer sessions and clear the history.
+5. **Theme settings:** Switch between light, dark, and system themes.
+6. **Completion feedback:** Audio and vibration feedback when a timer finishes.
+7. **Persistent data:** Save timer state, custom presets, preferences, and session history locally.
+8. **Responsive interface:** Adapt the layout to available screen dimensions.
 
 ---
 
-## 🏗️ Architecture & Directory Structure
+## 🧪 Experiments Based on the Flutter Lab Manual
 
-The application adopts a **Service-Oriented Architecture (SOA)** combined with the **Provider** pattern for reactive state management, adhering to the ACE Engineering College Flutter Lab standards:
+The sections below follow the experiment sequence and titles in the **UI Design – Flutter Lab Manual (2026)**. Each section explains how the topic relates to this Countdown Timer project. An experiment is marked as not demonstrated when the current project does not contain the required implementation.
 
-```
-sriyanshantigravity/
-├── assets/
-│   └── sounds/
-│       └── timer_beep.wav          # PCM audio alarm asset
-├── lib/
-│   ├── models/
-│   │   ├── timer_preset.dart       # Preset data model & serialization
-│   │   └── timer_history_item.dart # Completed session history model
-│   ├── screens/
-│   │   ├── custom_timer_dialog.dart# Form & validated duration input
-│   │   ├── history_screen.dart     # Logged sessions list
-│   │   ├── home_screen.dart        # Main responsive timer dashboard
-│   │   └── settings_screen.dart    # Theme, sound, and student info
-│   ├── services/
-│   │   ├── audio_service.dart      # Sound & haptic vibration manager
-│   │   ├── storage_service.dart    # SharedPreferences local persistence
-│   │   └── timer_service.dart      # Core ChangeNotifier business engine
-│   ├── theme/
-│   │   └── app_theme.dart          # Material 3 light & dark configurations
-│   └── main.dart                   # Application entry point & route registration
-├── test/
-│   ├── unit/
-│   │   ├── model_test.dart         # Data serialization & formatting tests
-│   │   └── timer_service_test.dart # Business logic & drift calculation tests
-│   └── widget_test.dart            # UI widget rendering and interaction tests
-└── pubspec.yaml                    # Package dependencies and asset declarations
+### Experiment 1 — Installation of Flutter & Dart SDK and Introduction to Dart Programming
+
+**Aim:** Set up the Flutter and Dart development environment and understand the basics of Dart programming.
+
+**Application in this project:**
+- The application is developed using Flutter and Dart.
+- The project uses a standard Flutter project structure.
+- Dependencies are managed through `pubspec.yaml`.
+
+**Setup commands:**
+```bash
+flutter doctor
+flutter pub get
+flutter run
 ```
 
----
+*No separate setup screenshot is currently included in the repository.*
 
-## 🧪 Automated Testing Suite
+### Experiment 2 — Exploring Flutter Widgets and Implementing Different Layout Structures Using Row, Column, and Stack
 
-All unit and widget tests are fully automated and verified:
+**Aim:** Understand Flutter widgets and create layouts using common UI components.
 
+**Application in this project:**
+- Uses Material widgets to build the timer interface.
+- Uses layout widgets to arrange timer information, controls, and preset options.
+- Uses reusable UI elements for consistent presentation.
+
+![Countdown Timer home screen preview](./screenshots/home-screen.svg)
+
+<sub>Illustrative UI preview stored in the repository; it is not a device screenshot.</sub>
+
+### Experiment 3 — Design a Responsive User Interface Using MediaQuery and LayoutBuilder
+
+**Aim:** Create interfaces that adapt to different screen sizes and orientations.
+
+**Application in this project:**
+- The timer dashboard is designed to adapt to the available screen width.
+- Layout constraints are used to keep controls and timer information arranged clearly.
+
+![Responsive Countdown Timer interface preview](./screenshots/home-screen.svg)
+
+<sub>The repository currently contains a source-based UI preview, not separate phone and tablet captures.</sub>
+
+### Experiment 4 — Navigation Between Different Screens Using Navigator and Named Routes
+
+**Aim:** Navigate between multiple screens and understand route management.
+
+**Application in this project:**
+- The application separates the timer dashboard, settings, and session history into screens.
+- Users can open the session history screen and return to the main timer interface.
+
+![Session history screen preview](./screenshots/history-screen.svg)
+
+<sub>Illustrative UI preview; session entries shown are sample content.</sub>
+
+### Experiment 5 — Understanding Stateful and Stateless Widgets and Implementing State Management Using setState() and Provider
+
+**Aim:** Understand widget state and update the UI when application data changes.
+
+**Application in this project:**
+- Provider and ChangeNotifier are used for shared timer state.
+- Timer actions update the displayed remaining duration and control state.
+- The interface reflects changes such as start, pause, resume, and reset.
+
+![Countdown Timer state and dashboard preview](./screenshots/home-screen.svg)
+
+<sub>Illustrative UI preview; the project source contains the timer state-management implementation.</sub>
+
+### Experiment 6 — Creating Custom Widgets and Applying Themes and Custom Styles in Flutter
+
+**Aim:** Create reusable widgets and maintain consistent application styling.
+
+**Application in this project:**
+- The application uses reusable UI components for timer controls and preset presentation.
+- Theme configuration is maintained separately.
+- Light, dark, and system theme options are provided.
+
+![Countdown Timer styling preview](./screenshots/home-screen.svg)
+
+<sub>Illustrative UI preview, not a device capture.</sub>
+
+### Experiment 7 — Designing Forms with Various Input Fields and Implementing Form Validation and Error Handling
+
+**Aim:** Collect user input and validate it before accepting the form.
+
+**Application in this project:**
+- The custom duration dialog accepts a session name and time values.
+- Duration input is validated before a custom timer can be configured.
+- Users can save custom durations as reusable presets.
+
+![Custom duration form preview](./screenshots/custom-duration.svg)
+
+<sub>Illustrative UI preview, not a device capture.</sub>
+
+### Experiment 8 — Implementing UI Animations Using Flutter Animation Framework and Experimenting with Fade and Slide Animations
+
+**Aim:** Understand Flutter animations and use them to improve the user interface.
+
+**Application in this project:**
+- The project README describes animated UI feedback and a timer progress presentation.
+- The current screenshot directory does not contain a dedicated animation output image.
+
+*Add a device screenshot or recording of the actual animation here when available. Do not treat the home-screen preview as proof of a fade or slide animation.*
+
+### Experiment 9 — Fetching Data from a REST API and Displaying the Data in Flutter UI
+
+**Aim:** Fetch data from a REST API, parse JSON, and display the result in the application.
+
+**Project status:** The current Countdown Timer project does not list REST API integration or an HTTP dependency in its `pubspec.yaml`. Therefore, this experiment is **not demonstrated by the current project** and no API screenshot is included.
+
+### Experiment 10 — Writing Unit Tests for Flutter UI Components and Using Flutter Debugging Tools to Identify and Fix Issues
+
+**Aim:** Test application logic and UI components and use Flutter tools to identify issues.
+
+**Application in this project:**
+- Unit tests cover timer-related logic and model behavior.
+- Widget tests cover UI rendering and user interactions.
+- The existing project README records **19 passing tests**.
+
+**Run the tests:**
 ```bash
 flutter test
 ```
 
-### Test Coverage Highlights:
-- **`model_test.dart` (4 tests):** Default presets integrity, JSON serialization/deserialization, `fromDuration` factory, and relative date formatting.
-- **`timer_service_test.dart` (10 tests):** Initial state verification, preset selection, target-based time calculation, pause/resume continuity, reset restoration, +1m/+5m time extension, custom duration configuration, and custom preset storage operations.
-- **`widget_test.dart` (5 tests):** Home screen component rendering, Start/Pause/Resume button transitions, dynamic time bumping, preset selection UI updates, and navigation to the Academic Project Profile in Settings.
-
-**Results:** 19/19 tests passing (100% pass rate).
+*The repository does not currently contain a separate test-results screenshot.*
 
 ---
 
-## 🚀 Getting Started & Execution
+## 🏗️ Project Structure
+
+```text
+countdown_timer/
+├── assets/
+│   └── sounds/              # Timer alert sound
+├── lib/
+│   ├── models/               # Timer preset and history models
+│   ├── screens/              # Home, settings, history, and dialog screens
+│   ├── services/             # Timer, storage, and audio services
+│   ├── theme/                # Application theme configuration
+│   ├── widgets/              # Reusable UI components
+│   └── main.dart             # Application entry point
+├── screenshots/              # UI preview illustrations
+├── test/
+│   ├── unit/                 # Unit tests
+│   └── widget_test.dart      # Widget tests
+├── pubspec.yaml              # Dependencies and assets
+└── README.md
+```
+
+## 🛠️ Technologies Used
+
+- **Flutter** — cross-platform UI framework
+- **Dart** — application programming language
+- **Provider** — state management
+- **SharedPreferences** — local data persistence
+- **audioplayers** — timer completion sound
+- **flutter_test** — unit and widget testing
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK `^3.47.5` or later
-- Dart SDK `^3.13.4` or later
-- Android Studio / VS Code / Flutter CLI
-- Physical device or Emulator / Chrome Browser / Windows Desktop
 
-### Installation
-1. Clone or navigate to the workspace directory:
+- Flutter SDK
+- Dart SDK
+- Android Studio or Visual Studio Code
+- Android emulator or a physical device
+
+### Run the project
+
+1. Clone the repository:
    ```bash
-   cd C:\Users\harin\Desktop\sriyanshantigravity
+   git clone https://github.com/sriyansh-0001/countdown_timer.git
    ```
-2. Retrieve dependencies:
+2. Open the project directory:
+   ```bash
+   cd countdown_timer
+   ```
+3. Install dependencies:
    ```bash
    flutter pub get
    ```
-3. Run static analysis:
-   ```bash
-   flutter analyze
-   ```
-4. Run automated test suite:
-   ```bash
-   flutter test
-   ```
-5. Launch the app on your preferred target:
+4. Run the application:
    ```bash
    flutter run
    ```
+5. Run tests:
+   ```bash
+   flutter test
+   ```
+
+## 🧪 Test Coverage
+
+The existing project documentation reports 19 tests:
+
+- **Model tests:** preset data, serialization, and date formatting.
+- **Timer service tests:** timer state, preset selection, pause/resume, reset, time extension, and custom preset operations.
+- **Widget tests:** home screen rendering, timer controls, preset selection, and navigation.
+
+Run `flutter test` to execute the suite in your environment.
+
+## 📄 Project Report
+
+The repository also contains the academic project report:
+
+[ACE Engineering College Project Report](./ACE_ENGINEERING_COLLEGE_PROJECT_REPORT.md)
 
 ---
 
-## 📄 Academic Project Report
+## 📸 Screenshot Notes
 
-A complete 16-section vacation project report structured exactly according to the ACE Engineering College format (`Project_Report_Format (during vacation).docx`) is available in the repository root at:
-👉 **[`ACE_ENGINEERING_COLLEGE_PROJECT_REPORT.md`](./ACE_ENGINEERING_COLLEGE_PROJECT_REPORT.md)**
+The four files currently present in `screenshots/` are SVG-based UI preview illustrations. They are not genuine screenshots captured from a running device. Actual screenshots should be added for each experiment after running the corresponding feature or test. The README intentionally does not claim that missing experiment evidence exists.
 
 ---
+
 *Developed by Sriyansh (Roll No: 24AG1A05585), ACE Engineering College, 2026.*
