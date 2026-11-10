@@ -158,18 +158,36 @@ A complete 16-section vacation project report structured exactly according to th
 
 ---
 
-## 📱 App Screenshots / UI Previews
+## 📱 Experiment-wise UI Evidence
 
-The following code-based UI previews were prepared by reviewing the Flutter source in this repository and the supplied ZIP archive. They illustrate the implemented screen structure and theme; **they are not direct captures from a running device**. Sample history entries and timer values are illustrative.
+The previews are positioned beside the corresponding Flutter lab concepts in Chapter 6 of the project report. They are source-based illustrations reconstructed from the repository code, **not screenshots captured from a running device or emulator**.
 
-### Home — Countdown Timer
-![Countdown Timer home screen](./screenshots/home-screen.svg)
+### Experiment 2, 3, 5 & 6 — Widgets, Responsive UI, Provider State & Custom Styling
 
-### Custom Duration Dialog
-![Custom duration dialog](./screenshots/custom-duration.svg)
+The home dashboard demonstrates the widget tree, responsive layout, Provider-driven timer state, reusable controls, preset cards, and the Material 3 circular progress indicator.
 
-### Session History
-![Timer history screen](./screenshots/history-screen.svg)
+![Home screen — widget tree, responsive dashboard and timer state](./screenshots/home-screen.svg)
 
-### Settings & Info
-![Settings and info screen](./screenshots/settings-screen.svg)
+### Experiment 4 — Navigation & Named Routes
+
+The History screen demonstrates the named-route destination and displays completed timer sessions.
+
+![Session history — navigation destination and completed sessions](./screenshots/history-screen.svg)
+
+*Session names and timestamps shown here are illustrative sample entries.*
+
+### Experiment 7 — Forms & Input Validation
+
+The Custom Duration dialog demonstrates session-name input, hour/minute/second fields, duration validation, and the option to save a reusable preset.
+
+![Custom duration dialog — form fields and validation workflow](./screenshots/custom-duration.svg)
+
+### Experiment 9 — Hardware Plugins, Preferences & Feedback
+
+The Settings screen demonstrates theme selection, sound alerts, vibration feedback, and local session-history management.
+
+![Settings screen — theme, sound and vibration preferences](./screenshots/settings-screen.svg)
+
+*These previews document the implemented screen structure and intended workflow. If actual app evidence is required for faculty submission, replace them with captures from a running emulator or physical device.*
+
+---
