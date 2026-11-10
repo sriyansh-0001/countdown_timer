@@ -154,3 +154,22 @@ A complete 16-section vacation project report structured exactly according to th
 
 ---
 *Developed by Sriyansh (Roll No: 24AG1A05585), ACE Engineering College, 2026.*
+
+
+---
+
+## 📱 App Screenshots / UI Previews
+
+The following code-based UI previews were prepared by reviewing the Flutter source in this repository and the supplied ZIP archive. They illustrate the implemented screen structure and theme; **they are not direct captures from a running device**. Sample history entries and timer values are illustrative.
+
+### Home — Countdown Timer
+![Countdown Timer home screen](./screenshots/home-screen.svg)
+
+### Custom Duration Dialog
+![Custom duration dialog](./screenshots/custom-duration.svg)
+
+### Session History
+![Timer history screen](./screenshots/history-screen.svg)
+
+### Settings & Info
+![Settings and info screen](./screenshots/settings-screen.svg)
