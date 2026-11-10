@@ -38,6 +38,16 @@ A modern, high-precision, responsive mobile countdown timer developed using Flut
    - Monospaced digital countdown typography (`HH:MM:SS`) to eliminate numerical jitter during countdowns.
    - State-aware dynamic circular progress ring (`CircularTimerProgress`) with glowing ambient stroke.
 
+   
+   **Experiment 2, 3, 5 & 6 — Basic Widgets, Responsive Design, Provider State & Custom Styling**
+
+   The home dashboard demonstrates the widget tree, responsive layout, Provider-driven timer state, reusable controls, preset cards, and the Material 3 progress indicator.
+
+   ![Home screen — Experiments 2, 3, 5 and 6](./screenshots/home-screen.svg)
+
+   *Source-based UI preview, not a device capture.*
+
+
 4. **Presets & Custom Duration Management:**
    - 8 built-in quick presets:
      - ⚡ Quick Test (1 min)
@@ -52,14 +62,44 @@ A modern, high-precision, responsive mobile countdown timer developed using Flut
    - User-created custom presets with full persistence and deletion support.
    - Quick time-bump buttons (`+1 min`, `+5 min`) during active or paused timers.
 
+   
+   **Experiment 7 — Forms & Input Validation**
+
+   The custom duration form demonstrates session-name input, hour/minute/second fields, duration validation, and the option to save a reusable preset.
+
+   ![Custom duration form — Experiment 7](./screenshots/custom-duration.svg)
+
+   *Source-based UI preview, not a device capture.*
+
+
 5. **Multi-Sensory Alerts & Feedback:**
    - Audio chime looped alert upon completion using valid PCM audio.
    - Tactile haptic vibration for button taps and alarm notifications.
    - Modal completion dialog with one-tap dismissal and instant session restart.
 
+   
+   **Experiment 9 — Hardware Plugins & User Preferences**
+
+   The Settings screen demonstrates theme selection, sound alerts, vibration feedback, and local data management.
+
+   ![Settings and feedback preferences — Experiment 9](./screenshots/settings-screen.svg)
+
+   *Source-based UI preview, not a device capture.*
+
+
 6. **History Logging & Analytics:**
    - Automatically logs completed timer sessions with duration, session name, and formatted timestamp.
    - Dedicated Session History screen (`/history`) with empty-state handling and complete history clearing.
+
+   
+   **Experiment 4 — Navigation & Named Routes**
+
+   The History screen is a named-route destination and displays completed timer sessions.
+
+   ![Session history — Experiment 4](./screenshots/history-screen.svg)
+
+   *The session names and timestamps are illustrative sample entries. This is a source-based UI preview, not a device capture.*
+
 
 ---
 
@@ -154,40 +194,3 @@ A complete 16-section vacation project report structured exactly according to th
 
 ---
 *Developed by Sriyansh (Roll No: 24AG1A05585), ACE Engineering College, 2026.*
-
-
----
-
-## 📱 Experiment-wise UI Evidence
-
-The previews are positioned beside the corresponding Flutter lab concepts in Chapter 6 of the project report. They are source-based illustrations reconstructed from the repository code, **not screenshots captured from a running device or emulator**.
-
-### Experiment 2, 3, 5 & 6 — Widgets, Responsive UI, Provider State & Custom Styling
-
-The home dashboard demonstrates the widget tree, responsive layout, Provider-driven timer state, reusable controls, preset cards, and the Material 3 circular progress indicator.
-
-![Home screen — widget tree, responsive dashboard and timer state](./screenshots/home-screen.svg)
-
-### Experiment 4 — Navigation & Named Routes
-
-The History screen demonstrates the named-route destination and displays completed timer sessions.
-
-![Session history — navigation destination and completed sessions](./screenshots/history-screen.svg)
-
-*Session names and timestamps shown here are illustrative sample entries.*
-
-### Experiment 7 — Forms & Input Validation
-
-The Custom Duration dialog demonstrates session-name input, hour/minute/second fields, duration validation, and the option to save a reusable preset.
-
-![Custom duration dialog — form fields and validation workflow](./screenshots/custom-duration.svg)
-
-### Experiment 9 — Hardware Plugins, Preferences & Feedback
-
-The Settings screen demonstrates theme selection, sound alerts, vibration feedback, and local session-history management.
-
-![Settings screen — theme, sound and vibration preferences](./screenshots/settings-screen.svg)
-
-*These previews document the implemented screen structure and intended workflow. If actual app evidence is required for faculty submission, replace them with captures from a running emulator or physical device.*
-
----
