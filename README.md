@@ -3,7 +3,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.47.5-02569B?logo=flutter)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.13.4-0175C2?logo=dart)](https://dart.dev)
 [![Material Design](https://img.shields.io/badge/Material%203-Enabled-7B1FA2)](https://m3.material.io)
-[![Tests](https://img.shields.io/badge/Tests-19%2F19%20Passing-success)](https://flutter.dev)
+[![Tests](https://img.shields.io/badge/Tests-Flutter%20Test%20Suite-blue)](https://docs.flutter.dev/testing)
 
 A Flutter-based countdown timer designed to help users manage study sessions, breaks, workouts, and daily tasks. The application includes timer presets, custom durations, pause/resume controls, session history, theme settings, and completion alerts.
 
@@ -40,6 +40,8 @@ A Flutter-based countdown timer designed to help users manage study sessions, br
 6. **Completion feedback:** Audio and vibration feedback when a timer finishes.
 7. **Persistent data:** Save timer state, custom presets, preferences, and session history locally.
 8. **Responsive interface:** Adapt the layout to available screen dimensions.
+9. **Fade and slide entrance:** Animate the timer panel when the dashboard opens.
+10. **REST API quote:** Fetch a random focus quote using HTTP GET and display parsed JSON data.
 
 ---
 
@@ -145,33 +147,49 @@ flutter run
 
 **Aim:** Understand Flutter animations and use them to improve the user interface.
 
-**Application in this project:**
-- The project README describes animated UI feedback and a timer progress presentation.
-- The current screenshot directory does not contain a dedicated animation output image.
+**Implementation in this project:**
+- Added a reusable `FadeSlideEntrance` widget using `TweenAnimationBuilder`.
+- The timer panel fades from opacity 0 to 1 and slides upward by 18 logical pixels.
+- The entrance uses an ease-out curve and a 650 ms duration.
+- The animation wraps only the timer panel; timer state, controls, presets, settings, history, and form validation are unchanged.
 
-*Add a device screenshot or recording of the actual animation here when available. Do not treat the home-screen preview as proof of a fade or slide animation.*
+![Experiment 8 fade and slide animation implementation](./screenshots/experiment-08-animation.svg)
+
+<sub>Implementation illustration, not a captured device screenshot or animation recording. Capture the running timer panel to provide practical evidence.</sub>
 
 ### Experiment 9 — Fetching Data from a REST API and Displaying the Data in Flutter UI
 
 **Aim:** Fetch data from a REST API, parse JSON, and display the result in the application.
 
-**Project status:** The current Countdown Timer project does not list REST API integration or an HTTP dependency in its `pubspec.yaml`. Therefore, this experiment is **not demonstrated by the current project** and no API screenshot is included.
+**Implementation in this project:**
+- Added the `http` package and a `FocusQuoteService` that sends an HTTP GET request to `https://dummyjson.com/quotes/random`.
+- Parses the JSON response into a `FocusQuote` model.
+- Added a separate **REST API – Focus Quote** screen, opened using the quote icon in the home screen app bar.
+- Shows a loading indicator, the returned quote and author, an error state, and a retry button.
+- The API feature is isolated in its own service and screen; it does not change the existing timer workflow.
+
+![Experiment 9 REST API quote screen preview](./screenshots/experiment-09-rest-api.svg)
+
+<sub>Illustrative screen preview. The quote and author shown in the running application are retrieved from the live API.</sub>
 
 ### Experiment 10 — Writing Unit Tests for Flutter UI Components and Using Flutter Debugging Tools to Identify and Fix Issues
 
 **Aim:** Test application logic and UI components and use Flutter tools to identify issues.
 
-**Application in this project:**
-- Unit tests cover timer-related logic and model behavior.
-- Widget tests cover UI rendering and user interactions.
-- The existing project README records **19 passing tests**.
+**Implementation in this project:**
+- Retains the existing timer model, timer service, and widget test suites.
+- Adds unit tests for quote JSON parsing, successful HTTP GET responses, non-200 responses, and unexpected JSON fields.
+- Uses Flutter's test framework and a mocked HTTP client so API tests do not depend on an internet connection.
 
-**Run the tests:**
+**Run the complete test suite:**
 ```bash
+flutter pub get
 flutter test
 ```
 
-*The repository does not currently contain a separate test-results screenshot.*
+![Experiment 10 automated testing workflow](./screenshots/experiment-10-testing.svg)
+
+<sub>Testing workflow illustration only. It does not show an executed terminal result or claim a passing test count. Run `flutter test` locally and capture the real terminal output for submission evidence.</sub>
 
 ---
 
@@ -188,7 +206,7 @@ countdown_timer/
 │   ├── theme/                # Application theme configuration
 │   ├── widgets/              # Reusable UI components
 │   └── main.dart             # Application entry point
-├── screenshots/              # UI preview illustrations
+├── screenshots/              # Experiment UI and workflow illustrations
 ├── test/
 │   ├── unit/                 # Unit tests
 │   └── widget_test.dart      # Widget tests
@@ -203,6 +221,7 @@ countdown_timer/
 - **Provider** — state management
 - **SharedPreferences** — local data persistence
 - **audioplayers** — timer completion sound
+- **http** — REST API requests
 - **flutter_test** — unit and widget testing
 
 ## 🚀 Getting Started
@@ -239,13 +258,13 @@ countdown_timer/
 
 ## 🧪 Test Coverage
 
-The existing project documentation reports 19 tests:
-
-- **Model tests:** preset data, serialization, and date formatting.
+The test suite includes:
+- **Model tests:** preset and history serialization and formatting.
 - **Timer service tests:** timer state, preset selection, pause/resume, reset, time extension, and custom preset operations.
-- **Widget tests:** home screen rendering, timer controls, preset selection, and navigation.
+- **REST API tests:** quote JSON parsing, successful HTTP GET response, non-200 response handling, and invalid response fields.
+- **Widget tests:** home screen rendering, timer controls, preset selection, and academic information display.
 
-Run `flutter test` to execute the suite in your environment.
+Execute `flutter test` to see the actual test results in your environment. No unverified pass count is published here.
 
 ## 📄 Project Report
 
@@ -257,7 +276,7 @@ The repository also contains the academic project report:
 
 ## 📸 Screenshot Notes
 
-The four files currently present in `screenshots/` are SVG-based UI preview illustrations. They are not genuine screenshots captured from a running device. Actual screenshots should be added for each experiment after running the corresponding feature or test. The README intentionally does not claim that missing experiment evidence exists.
+The SVG files in `screenshots/` are labelled implementation or workflow illustrations, not genuine device captures. For final lab evidence, replace or supplement them with screenshots captured from the running app (Experiment 8 and 9) and the actual terminal output from `flutter test` (Experiment 10).
 
 ---
 
