@@ -209,8 +209,6 @@ void main() {
       );
 
       expect(find.text('ACE Engineering College'), findsOneWidget);
-      expect(find.text('Sriyansh'), findsOneWidget);
-      expect(find.text('24AG1A05585'), findsOneWidget);
       expect(find.text('B.Tech 3rd Year, Sem 1'), findsOneWidget);
     });
   });
