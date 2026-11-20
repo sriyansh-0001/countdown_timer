@@ -208,8 +208,6 @@ class SettingsScreen extends StatelessWidget {
                     ],
                   ),
                   const Divider(height: 24),
-                  _buildInfoRow('Student Name', 'Sriyansh'),
-                  _buildInfoRow('Roll Number', '24AG1A05585'),
                   _buildInfoRow('Academic Level', 'B.Tech 3rd Year, Sem 1'),
                   _buildInfoRow('Project', 'Modern Flutter Countdown Timer'),
                   _buildInfoRow(
