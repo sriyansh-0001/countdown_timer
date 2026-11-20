@@ -1,11 +1,11 @@
 {
-    "name": "countdown_timer",
-    "short_name": "countdown_timer",
+    "name": "Focus Countdown Timer",
+    "short_name": "Focus Timer",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A clean, responsive countdown timer with custom sessions, presets, and focus history.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
